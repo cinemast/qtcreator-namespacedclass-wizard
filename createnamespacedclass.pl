@@ -67,6 +67,8 @@ my $headerFileName = $path . "/" . $baseFileName . '.' . $optCppHeaderSuffix;
 my $guard = uc(join("_",@packages))."_".uc($classname)."_H__";
 my $created = strftime("%F", localtime);
 
+my $suffix = $optCppHeaderSuffix;
+
 if ($optDryRun) {
 #   -- Step 1) Dry run: Print file names along with attributes
    print $sourceFileName,",openeditor\n";
@@ -119,6 +121,21 @@ $headerFile->close();
 
 
 my $sourceFile = new IO::File('>' . $sourceFileName);
+
+my $licensecpp = <<"END";
+/*
+ * $baseFileName.$optCppSourceSuffix
+ ****************************************************************************
+ * Created on: $created
+ * Author: $optAuthorName <$optAuthorMail>
+ *
+ * This source code and its use and distribution, is subject to the terms
+ * and conditions of the applicable license agreement.
+ *****************************************************************************/
+
+END
+
+print $sourceFile $licensecpp;
 
 print $sourceFile "#include \"$baseFileName.$optCppHeaderSuffix\"\n\n";
 
