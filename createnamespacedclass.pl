@@ -56,6 +56,7 @@ my $path = join("/",@packages);
 
 my $baseFileName = $classname;
 
+#this option is currently not working
 if ($optLowerCase) {
     my $baseFileName = lc($baseFileName);
 }
@@ -71,8 +72,7 @@ if ($optDryRun) {
    print $sourceFileName,",openeditor\n";
    print $headerFileName,",openeditor\n";
 } else {
-#    make_path($path)
-    
+    make_path($path);    
     my $license = <<"END";
 /*
  * $baseFileName.$optCppHeaderSuffix
@@ -90,27 +90,40 @@ if ($optDryRun) {
 
 END
 
-print $license;
+
+my $headerFile = new IO::File('>' . $headerFileName);
+
+print $headerFile $license;
 
 for (my $i =0; $i < scalar(@packages); $i++) {
-    print " " x ($optIndentation * $i);
-    print "namespace $packages[$i]\n";
-    print " " x ($optIndentation * $i);
-    print "{\n";
+    print $headerFile " " x ($optIndentation * $i);
+    print $headerFile "namespace $packages[$i]\n";
+    print $headerFile " " x ($optIndentation * $i);
+    print $headerFile "{\n";
 }
 
-print " " x ($optIndentation * scalar(@packages));
-print "class $classname\n";
-print " " x ($optIndentation * scalar(@packages));
-print "{\n\n\n";
-print " " x ($optIndentation * scalar(@packages));
-print "};\n";
+print $headerFile " " x ($optIndentation * scalar(@packages));
+print $headerFile "class $classname\n";
+print $headerFile " " x ($optIndentation * scalar(@packages));
+print $headerFile "{\n\n\n";
+print $headerFile " " x ($optIndentation * scalar(@packages));
+print $headerFile "};\n";
 
 for (my $i=scalar(@packages)-1; $i >= 0; $i--) {
-    print " " x ($optIndentation * $i);
-    print "}\n";
+    print $headerFile " " x ($optIndentation * $i);
+    print $headerFile "}\n";
 }
 
-print "\n#endif // $guard\n";
+print $headerFile "\n#endif // $guard\n";
+$headerFile->close();
+
+
+my $sourceFile = new IO::File('>' . $sourceFileName);
+
+print $sourceFile "#include \"$baseFileName.$optCppHeaderSuffix\"\n\n";
+
+print $sourceFile "using namespace " . join("::",@packages) .";\n\n";
+
+$sourceFile->close();
 
 }
