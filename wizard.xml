@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wizard version="1" kind="class" id="A.NamespacedClass" category="B.CustomClasses">
+    <description>Creates a new class inside namespaces.</description>
+
+    <displayname>Namespaced Class</displayname>;
+    <displaycategory>Custom Classes</displaycategory>
+    <generatorscript binary="createnamesapcedclass.pl">
+        <argument value="--class-name=%ClassName%"/>
+        <argument value="--project-name=%ProjectName%"/>
+        <argument value="--header-suffix=%CppHeaderSuffix%" omit-empty="true"/>
+        <argument value="--source-suffix=%CppSourceSuffix%" omit-empty="true"/>
+	 <!-- Multi-line description passed as temporary file unless empty -->
+        <argument value="--description=%Description%" omit-empty="true" write-file="true"/>
+    </generatorscript>
+    <!-- Create parameter wizard page -->
+    <fieldpagetitle>New namespaced class</fieldpagetitle>
+    <fieldpagetitle xml:lang="de">Neue Klasse mit namespaces</fieldpagetitle>
+    <fields>
+        <field name="ClassName">
+            <fieldcontrol class="QLineEdit" validator="^[a-zA-Z0-9_\.]+$" defaulttext="org.company.Class" placeholdertext="Enter a class name"/>
+            <fielddescription>Class name:</fielddescription>
+            <fielddescription xml:lang="de">Klassenname:</fielddescription>
+        </field>
+        <field name="Lowercase">
+            <fieldcontrol class="QComboBox" defaultindex="0">
+	        <comboentries>
+		    <comboentry value="QString">
+		        <comboentrytext>true</comboentrytext>
+		    </comboentry>
+		    <comboentry value="QString">
+		        <comboentrytext>false</comboentrytext>
+		        <comboentrytext xml:lang="de">Ganzzahlwert</comboentrytext>
+		    </comboentry>
+	        </comboentries>
+	    </fieldcontrol>
+            <fielddescription>Data type:</fielddescription>
+            <fielddescription xml:lang="de">Datentyp:</fielddescription>
+        </field>
+    </fields>
+</wizard>
