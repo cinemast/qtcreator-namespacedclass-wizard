@@ -16,10 +16,10 @@ my $optDescription = '';
 my $optIndentation = 4;
 my $optAuthorMail = '';
 my $optAuthorName = '';
-my $optLowerCase = 1;
+my $optLowerCase = "true";
 
 my $USAGE=<<EOF;
-Usage: createclass.pl [--help] | [--dry-run] [--lowercase]
+Usage: createclass.pl [--help] | [--dry-run] [--lowercase=<true|false>]
                    [--class-name=<some.package.classname>]
                    [--header-suffix=<header suffix>]
                    [--source-suffix=<source suffix>]
@@ -35,7 +35,7 @@ my $argCount = scalar(@ARGV);
 if ($argCount == 0
     || !GetOptions("help" => \$optHelp,
                    "dry-run" => \$optDryRun,
-                   "lowercase" => \$optLowerCase,
+                   "lowercase:s" => \$optLowerCase,
                    "class-name:s" => \$optClassName,
                    "header-suffix:s" => \$optCppHeaderSuffix,
                    "source-suffix:s" => \$optCppSourceSuffix,
@@ -57,8 +57,9 @@ my $path = join("/",@packages);
 my $baseFileName = $classname;
 
 #this option is currently not working
-if ($optLowerCase) {
-    my $baseFileName = lc($baseFileName);
+print $optLowerCase;
+if ($optLowerCase eq "true") {
+    $baseFileName = lc($baseFileName);
 }
 
 my $sourceFileName = $path . "/" . $baseFileName . '.' . $optCppSourceSuffix;
