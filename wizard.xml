@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<wizard version="1" kind="class" id="A.NamespacedClass" category="B.CustomClasses">
+<wizard version="1" kind="class" id="A.NamespacedClass" category="B.C++">
     <description>Creates a new class inside namespaces.</description>
 
     <displayname>Namespaced Class</displayname>;
@@ -10,10 +10,7 @@
         <argument value="--lowercase=%Lowercase%"/>
         <argument value="--header-suffix=%CppHeaderSuffix%" omit-empty="true"/>
         <argument value="--source-suffix=%CppSourceSuffix%" omit-empty="true"/>
-	 <!-- Multi-line description passed as temporary file unless empty -->
-        <argument value="--description=%Description%" omit-empty="true" write-file="true"/>
     </generatorscript>
-    <!-- Create parameter wizard page -->
     <fieldpagetitle>New namespaced class</fieldpagetitle>
     <fieldpagetitle xml:lang="de">Neue Klasse mit namespaces</fieldpagetitle>
     <fields>
