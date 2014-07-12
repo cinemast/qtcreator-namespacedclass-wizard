@@ -4,10 +4,10 @@
     <description>Creates a new class inside namespaces.</description>
 
     <displayname>Namespaced Class</displayname>;
-    <displaycategory>Custom Classes</displaycategory>
-    <generatorscript binary="createnamesapcedclass.pl">
+    <displaycategory>C++</displaycategory>
+    <generatorscript binary="createnamespacedclass.pl">
         <argument value="--class-name=%ClassName%"/>
-        <argument value="--project-name=%ProjectName%"/>
+        <argument value="--lowercase=%Lowercase%"/>
         <argument value="--header-suffix=%CppHeaderSuffix%" omit-empty="true"/>
         <argument value="--source-suffix=%CppSourceSuffix%" omit-empty="true"/>
 	 <!-- Multi-line description passed as temporary file unless empty -->
@@ -24,18 +24,16 @@
         </field>
         <field name="Lowercase">
             <fieldcontrol class="QComboBox" defaultindex="0">
-	        <comboentries>
-		    <comboentry value="QString">
-		        <comboentrytext>true</comboentrytext>
-		    </comboentry>
-		    <comboentry value="QString">
-		        <comboentrytext>false</comboentrytext>
-		        <comboentrytext xml:lang="de">Ganzzahlwert</comboentrytext>
-		    </comboentry>
-	        </comboentries>
-	    </fieldcontrol>
-            <fielddescription>Data type:</fielddescription>
-            <fielddescription xml:lang="de">Datentyp:</fielddescription>
+    	        <comboentries>
+    		    <comboentry value="true">
+    		        <comboentrytext>Yes</comboentrytext>
+    		    </comboentry>
+    		    <comboentry value="false">
+    		        <comboentrytext>No</comboentrytext>
+    		    </comboentry>
+    	        </comboentries>
+    	    </fieldcontrol>
+            <fielddescription>Filename lowercase:</fielddescription>
         </field>
     </fields>
 </wizard>
