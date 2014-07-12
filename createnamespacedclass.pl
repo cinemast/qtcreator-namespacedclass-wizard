@@ -57,7 +57,6 @@ my $path = join("/",@packages);
 my $baseFileName = $classname;
 
 #this option is currently not working
-print $optLowerCase;
 if ($optLowerCase eq "true") {
     $baseFileName = lc($baseFileName);
 }
