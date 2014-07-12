@@ -3,7 +3,7 @@ qtcreator-namespacedclass-wizard
 
 A wizard for the Qt Creator that creates classes organized in namespaces.
 
-![qtcreator logo](http://3.bp.blogspot.com/_YyvI2G2G1X8/TG4U2bhrDWI/AAAAAAAAAPA/I9uyGRiv6II/s1600/Nokia-QtCreator-128.png)
+![qtcreator logo](http://3.bp.blogspot.com/_YyvI2G2G1X8/TG4U2bhrDWI/AAAAAAAAAPA/I9uyGRiv6II/s1600/Nokia-QtCreator-128.png " ")
 
 http://upload.wikimedia.org/wikipedia/fr/3/32/Qt_Creator_Icon_Web.png
 
