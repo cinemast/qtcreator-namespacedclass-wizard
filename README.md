@@ -5,8 +5,6 @@ A wizard for the Qt Creator that creates classes organized in namespaces.
 
 ![alt logo](https://raw.githubusercontent.com/cinemast/qtcreator-namespacedclass-wizard/master/icon.png "Logo")
 
-http://upload.wikimedia.org/wikipedia/fr/3/32/Qt_Creator_Icon_Web.png
-
 Install
 ----------
 ```sh
