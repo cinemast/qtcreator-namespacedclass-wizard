@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <wizard version="1" kind="class" id="A.NamespacedClass" category="B.C++">
+    <icon>icon.png</icon>
     <description>Creates a new class inside namespaces.</description>
 
     <displayname>Namespaced Class</displayname>;
-    <displaycategory>C++</displaycategory>
+    <displaycategory>Namespaced Class</displaycategory>
     <generatorscript binary="createnamespacedclass.pl">
         <argument value="--class-name=%ClassName%"/>
         <argument value="--lowercase=%Lowercase%"/>

@@ -19,7 +19,7 @@ cd qtcreator-namespacedclass-wizard
 Usage
 ----------
 
-File -> New File or Project -> C++ -> Namespaced Class
+File -> New File or Project -> Namespaced Class -> Namespaced Class
 
 Adaptation
 ------------
