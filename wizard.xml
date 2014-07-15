@@ -11,6 +11,7 @@
         <argument value="--lowercase=%Lowercase%"/>
         <argument value="--header-suffix=%CppHeaderSuffix%" omit-empty="true"/>
         <argument value="--source-suffix=%CppSourceSuffix%" omit-empty="true"/>
+        <argument value="--subfolders=%Subfolders%" />
     </generatorscript>
     <fieldpagetitle>New namespaced class</fieldpagetitle>
     <fieldpagetitle xml:lang="de">Neue Klasse mit namespaces</fieldpagetitle>
@@ -20,18 +21,15 @@
             <fielddescription>Class name:</fielddescription>
             <fielddescription xml:lang="de">Klassenname:</fielddescription>
         </field>
+        <field name="Subfolders">
+            <fieldcontrol class="QCheckBox" truevalue="true" falsevalue="false" defaultvalue="true">
+            </fieldcontrol>
+            <fielddescription>Create subfolders for package</fielddescription>
+        </field>
         <field name="Lowercase">
-            <fieldcontrol class="QComboBox" defaultindex="0">
-    	        <comboentries>
-    		    <comboentry value="true">
-    		        <comboentrytext>Yes</comboentrytext>
-    		    </comboentry>
-    		    <comboentry value="false">
-    		        <comboentrytext>No</comboentrytext>
-    		    </comboentry>
-    	        </comboentries>
-    	    </fieldcontrol>
-            <fielddescription>Filename lowercase:</fielddescription>
+            <fieldcontrol class="QCheckBox" truevalue="true" falsevalue="false" defaultvalue="true">
+            </fieldcontrol>
+            <fielddescription>Use lowercase filenames</fielddescription>
         </field>
     </fields>
 </wizard>

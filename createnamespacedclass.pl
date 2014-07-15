@@ -16,10 +16,11 @@ my $optDescription = '';
 my $optIndentation = 4;
 my $optAuthorMail = '';
 my $optAuthorName = '';
+my $optSubfolders = "true";
 my $optLowerCase = "true";
 
 my $USAGE=<<EOF;
-Usage: createclass.pl [--help] | [--dry-run] [--lowercase=<true|false>]
+Usage: createclass.pl [--help] | [--dry-run] [--lowercase=<true|false>] [--subfolders=<true|false>]
                    [--class-name=<some.package.classname>]
                    [--header-suffix=<header suffix>]
                    [--source-suffix=<source suffix>]
@@ -36,6 +37,7 @@ if ($argCount == 0
     || !GetOptions("help" => \$optHelp,
                    "dry-run" => \$optDryRun,
                    "lowercase:s" => \$optLowerCase,
+                   "subfolders:s" => \$optSubfolders,
                    "class-name:s" => \$optClassName,
                    "header-suffix:s" => \$optCppHeaderSuffix,
                    "source-suffix:s" => \$optCppSourceSuffix,
@@ -51,9 +53,17 @@ if ($argCount == 0
 my @packages = split('\.', $optClassName);
 my $length = scalar(@packages);
 my $classname = $packages[$length-1];
-@packages = splice(@packages,0,$length-1);
-my $path = join("/",@packages);
+if (index($optClassName, ".") == -1) {
+    $classname = $optClassName;
+}
 
+@packages = splice(@packages,0,$length-1);
+
+my $path = "";
+if ($optSubfolders eq "true" and index($optClassName, ".") != -1) {
+    print "Joining path\n";
+    $path = join("/",@packages) . "/";
+}
 my $baseFileName = $classname;
 
 #this option is currently not working
@@ -61,8 +71,8 @@ if ($optLowerCase eq "true") {
     $baseFileName = lc($baseFileName);
 }
 
-my $sourceFileName = $path . "/" . $baseFileName . '.' . $optCppSourceSuffix;
-my $headerFileName = $path . "/" . $baseFileName . '.' . $optCppHeaderSuffix;
+my $sourceFileName = $path . $baseFileName . '.' . $optCppSourceSuffix;
+my $headerFileName = $path . $baseFileName . '.' . $optCppHeaderSuffix;
 
 my $guard = uc(join("_",@packages))."_".uc($classname)."_H__";
 my $created = strftime("%F", localtime);
